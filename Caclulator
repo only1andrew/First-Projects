@@ -1,0 +1,70 @@
+#include "projects_calculator.h"
+#include <iostream>
+#include <cmath>
+#include <cstring>
+using namespace std;
+
+int main() {
+    int firstNumber, secondNumber;
+    char operation;
+    char choice;
+    do {
+
+
+        cout << "Enter the first number!" << endl;
+        cin >> firstNumber;
+        cout << "Enter the operation (+, -, *, /, %, ^, r-squareroot): " << endl;
+        cin >> operation;
+        if (operation != 'r') {
+            cout << "Enter the second number!" << endl;
+            cin >> secondNumber;
+        }
+
+
+        switch (operation) {
+            case '+':
+                cout << firstNumber << " + " << secondNumber << " = " << firstNumber + secondNumber << endl;
+                break;
+            case '-':
+                cout << firstNumber << " - " << secondNumber << " = " << firstNumber - secondNumber << endl;
+                break;
+            case '*':
+                cout << firstNumber << " * " << secondNumber << " = " << firstNumber * secondNumber << endl;
+                break;
+            case '/':
+                if (secondNumber != 0) {
+                    cout << firstNumber << " / " << secondNumber << " = " << firstNumber / secondNumber << endl;
+                } else {
+                    cout << "Division by zero is not allowed!" << endl;
+                }
+                break;
+            case '%':
+                if (secondNumber != 0) {
+                    cout << firstNumber << " % " << secondNumber << " = " << firstNumber % secondNumber << endl;
+                } else {
+                    cout << "Division by zero is not allowed" << endl;
+                }
+                break;
+
+            case '^':
+                cout << firstNumber << "^" << secondNumber << pow(firstNumber, secondNumber);
+                break;
+            case 'r':
+                if (firstNumber >= 0) {
+                    cout << "Square root of number is" << sqrt(firstNumber);
+                } else {
+                    cout << "Square roots of negative numbers are not allowed!" << endl;
+                }
+                break;
+        }
+        cout<<"Do you want to perform another operation? (y/n): "<<endl;
+        cin>>choice;
+        if(choice == 'y' || choice == 'Y')
+        {
+            system("clear"); //clear the terminal after the operation before
+        }
+    }while(choice == 'y' || choice == 'Y');
+
+    cout<<"Thanks for using the calculator!"<<endl;
+    return 0;
+}
